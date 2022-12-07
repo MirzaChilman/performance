@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import usePokemon from '../../hooks/usePokemons';
+import Skeleton from '../Skeleton';
 
 const PokemonDetail = () => {
 	const {id} = useParams();
@@ -18,7 +19,10 @@ const PokemonDetail = () => {
 
 	const sprites = pokemon?.sprites && Object.values(pokemon.sprites).filter(sprite => typeof sprite === 'string');
 
-	console.log({myPk: pokemon});
+	if (!pokemon) {
+		return <Skeleton />;
+	}
+
 	return (
 		<section>
 			<div className='relative mx-auto max-w-screen-xl px-4 py-8'>
