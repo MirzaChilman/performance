@@ -22,6 +22,13 @@ const usePokemon = () => {
 		setPokemons(await Promise.all(pokemonList));
 	};
 
+	const fetchPokemon = async id => {
+		const urlPekemon = `${process.env.REACT_APP_API}/pokemon/${id}`;
+		const pokemonResult = await fetch(urlPekemon);
+		const result = await pokemonResult.json();
+		return result;
+	};
+
 	useEffect(() => {
 		fetchPokemons();
 	}, []);
@@ -29,6 +36,7 @@ const usePokemon = () => {
 	return {
 		pokemons,
 		loading,
+		fetchPokemon,
 	};
 };
 
