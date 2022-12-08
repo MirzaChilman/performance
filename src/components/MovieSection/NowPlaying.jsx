@@ -26,9 +26,10 @@ const NowPlaying = () => {
 					className='flex flex-nowrap lg:ml-40 md:ml-20 ml-10 '
 				>
 					{nowPlayingMovies?.results?.map(result => {
-						const {backdrop_path, id, original_title, vote_average, poster_path, overview} = result;
+						const {backdrop_path, id, original_title, vote_average, poster_path, overview, tagline} = result;
+						console.log({result});
 						return (
-							<MovieCard key={id} title={original_title} vote={vote_average} poster={backdrop_path} overview={overview} />
+							<MovieCard key={id} id={id} title={original_title} vote={vote_average} tagline={tagline} poster={backdrop_path} overview={overview} />
 						);
 					})}
 				</div>
