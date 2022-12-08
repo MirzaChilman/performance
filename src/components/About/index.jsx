@@ -1,4 +1,4 @@
-import {useState, useCallback, useMemo, memo} from 'react';
+import {useState, useCallback} from 'react';
 import Button from './Button';
 
 const About = () => {
@@ -6,7 +6,12 @@ const About = () => {
 	const [countOne, setCountOne] = useState(0);
 	const [countTwo, setCountTwo] = useState(0);
 	// 0x000aava
-	const handleClickOne = useCallback(() => setCountOne(countOne + 1), [countOne]);
+	const handleClickOne = useCallback(() => {
+		import(/* webpackChunkName: "unique" */'../../helpers/generateUniqueNumber').then(mod => {
+			const uniqueCount = mod.generateUniqueNumber(countOne);
+			setCountOne(uniqueCount);
+		});
+	}, [countOne]);
 	const handleClickTwo = useCallback(() => setCountTwo(countTwo + 1), [countTwo]);
 
 	return (
