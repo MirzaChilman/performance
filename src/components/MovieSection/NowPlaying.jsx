@@ -1,14 +1,17 @@
 import {useEffect} from 'react';
 import useMovies from '../../hooks/useMovies';
+import useNowPlaying from '../../hooks/useNowPlaying';
 import MovieCard from '../MovieCard';
 import SkeletonSection from '../SkeletonSection';
 const NowPlaying = () => {
-	const {fetchNowPlaying, nowPlayingMovies} = useMovies();
-	useEffect(() => {
-		fetchNowPlaying();
-	}, []);
+	const {data, isLoading} = useNowPlaying();
+	console.log({data});
 
-	if (!nowPlayingMovies) {
+	// UseEffect(() => {
+	// 	fetchNowPlaying();
+	// }, []);
+
+	if (isLoading) {
 		return (
 			<SkeletonSection/>
 		);
@@ -27,7 +30,7 @@ const NowPlaying = () => {
 				<div
 					className='flex flex-nowrap lg:ml-40 md:ml-20 ml-2'
 				>
-					{nowPlayingMovies?.results?.map((result, index) => {
+					{data?.results?.map((result, index) => {
 						const {backdrop_path, id, original_title, vote_average, poster_path, overview} = result;
 						return (
 							<MovieCard key={id} index={index} id={id} title={original_title} vote={vote_average} poster={backdrop_path} overview={overview} />
