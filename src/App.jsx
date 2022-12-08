@@ -1,18 +1,29 @@
+import {lazy, Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
-import About from './components/About';
-import Header from './components/Header';
-import MovieDetail from './components/MovieDetail';
-import MovieList from './components/MovieList';
+import SkeletonSection from './components/SkeletonSection';
+
+const About = lazy(() => import('./components/About'));
+const MovieDetail = lazy(() => import('./components/MovieDetail'));
+const MovieList = lazy(() => import('./components/MovieList'));
 
 function App() {
 	return (
 		<div className='App'>
 
 			<Routes>
-				<Route path='/' element={<MovieList/>} />
-				<Route path='/detail/:id' element={<MovieDetail/>} />
-				<Route path='/about' element={<About/>} />
+				<Route index path='/' element={
+					<Suspense fallback={'loading'}>
+						<MovieList/>
+					</Suspense>} />
+				<Route path='/detail/:id' element={
+					<Suspense fallback={'loading'}>
+						<MovieDetail/>
+					</Suspense>} />
+				<Route path='/about' element={
+					<Suspense fallback={'loading'}>
+						<About/>
+					</Suspense>} />
 			</Routes>
 
 		</div>

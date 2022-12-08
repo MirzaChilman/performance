@@ -1,12 +1,19 @@
 import {useEffect} from 'react';
-import useMovies from '../../hooks/useMovies';
-import MovieCard from '../MovieCard';
+import useMovies from '../../../hooks/useMovies';
+import MovieCard from '../../MovieCard';
+import SkeletonSection from '../../SkeletonSection';
 
 const Upcoming = () => {
 	const {fetchUpcomingMovies, upcomingMovies} = useMovies();
 	useEffect(() => {
 		fetchUpcomingMovies();
 	}, []);
+
+	if (!upcomingMovies) {
+		return (
+			<SkeletonSection/>
+		);
+	}
 
 	return (
 		<div className='flex flex-col m-auto p-auto'>
@@ -21,10 +28,10 @@ const Upcoming = () => {
 				<div
 					className='flex flex-nowrap lg:ml-40 md:ml-20 ml-2'
 				>
-					{upcomingMovies?.results?.map(result => {
+					{upcomingMovies?.results?.map((result, index) => {
 						const {backdrop_path, id, original_title, vote_average, poster_path, overview} = result;
 						return (
-							<MovieCard key={id} title={original_title} vote={vote_average} poster={backdrop_path} overview={overview} />
+							<MovieCard key={id} index={index} title={original_title} vote={vote_average} poster={backdrop_path} overview={overview} />
 						);
 					})}
 				</div>
