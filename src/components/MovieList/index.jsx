@@ -9,7 +9,6 @@ import Popular from '../MovieSection/Popular';
 
 const MovieList = () => (
 	<div className='h-full dark:bg-gray-800 dark:text-gray-100'>
-		<Header/>
 		<Suspense fallback={<SkeletonSection/>}>
 			<NowPlaying />
 		</Suspense>
