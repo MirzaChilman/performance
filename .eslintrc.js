@@ -5,6 +5,7 @@ module.exports = {
 	},
 	extends: [
 		'plugin:react/recommended',
+		'plugin:react-hooks/recommended',
 		'xo',
 	],
 	overrides: [
@@ -20,6 +21,7 @@ module.exports = {
 		'react/prop-types': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'no-unused-vars': 'warn',
+		'react/display-name': 'off',
 		camelcase: 'off',
 	},
 };

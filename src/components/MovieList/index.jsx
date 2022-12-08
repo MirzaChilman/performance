@@ -1,6 +1,4 @@
-import useIntersect from '@jackyef/use-intersect';
-import {lazy, Suspense, useEffect, useState} from 'react';
-import Header from '../Header';
+import {Suspense} from 'react';
 import SkeletonSection from '../SkeletonSection';
 import NowPlaying from '../MovieSection/NowPlaying';
 import TopRated from '../MovieSection/TopRated';
