@@ -9,7 +9,7 @@ const Header = () => {
 	console.log('MASOK');
 
 	return (
-		<div className='bg-black p-3'>
+		<div className='bg-black p-3 shadow-2xl'>
 			<img className='h-[64px] bg-cover mx-auto' src='https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/03/18/1919380816.png' alt='' />
 			<header className='flex justify-evenly gap-2 pt-2'>
 				{links.map(link => (
