@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import useMovies from '../../hooks/useMovies';
 import MovieCard from '../MovieCard';
+import SkeletonSection from '../SkeletonSection';
 
 const NowPlaying = () => {
 	const {fetchNowPlaying, nowPlayingMovies} = useMovies();
@@ -8,8 +9,10 @@ const NowPlaying = () => {
 		fetchNowPlaying();
 	}, []);
 
-	if (nowPlayingMovies.length === 0) {
-		return 'Loading';
+	if (!nowPlayingMovies) {
+		return (
+			<SkeletonSection/>
+		);
 	}
 
 	return (

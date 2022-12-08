@@ -2,7 +2,6 @@ import useMovie from '../../hooks/useMovie';
 
 const MovieDetail = () => {
 	const {movieDetail} = useMovie();
-	console.log(movieDetail);
 	if (!movieDetail) {
 		return null;
 	}

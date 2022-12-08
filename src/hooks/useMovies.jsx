@@ -1,10 +1,10 @@
 import {useState} from 'react';
 
 const useMovies = () => {
-	const [popularMovies, setPopularMovies] = useState([]);
-	const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-	const [topRatedMovies, setTopRatedMovies] = useState([]);
-	const [upcomingMovies, setUpcomingMovies] = useState([]);
+	const [popularMovies, setPopularMovies] = useState(null);
+	const [nowPlayingMovies, setNowPlayingMovies] = useState(null);
+	const [topRatedMovies, setTopRatedMovies] = useState(null);
+	const [upcomingMovies, setUpcomingMovies] = useState(null);
 
 	const fetchPopularMovie = async () => {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`);
