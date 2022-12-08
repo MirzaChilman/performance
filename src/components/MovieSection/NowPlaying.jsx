@@ -1,15 +1,8 @@
-import {useEffect} from 'react';
-import useMovies from '../../hooks/useMovies';
 import useNowPlaying from '../../hooks/useNowPlaying';
 import MovieCard from '../MovieCard';
 import SkeletonSection from '../SkeletonSection';
 const NowPlaying = () => {
 	const {data, isLoading} = useNowPlaying();
-	console.log({data});
-
-	// UseEffect(() => {
-	// 	fetchNowPlaying();
-	// }, []);
 
 	if (isLoading) {
 		return (
